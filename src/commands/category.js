@@ -34,7 +34,7 @@ export function categoryCommand() {
         printOutput(categories, opts.format, CATEGORY_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -62,7 +62,7 @@ export function categoryCommand() {
         printOutput(category, opts.format, CATEGORY_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -78,7 +78,7 @@ export function categoryCommand() {
         console.log(`Category deleted (ID: ${id}).`);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 

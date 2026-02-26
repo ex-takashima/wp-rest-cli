@@ -51,7 +51,7 @@ export function mediaCommand() {
         printOutput(media, opts.format, MEDIA_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -70,7 +70,7 @@ export function mediaCommand() {
         printOutput(media, opts.format, MEDIA_DETAIL_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -87,7 +87,7 @@ export function mediaCommand() {
         console.log(`Media deleted permanently (ID: ${id}).`);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 

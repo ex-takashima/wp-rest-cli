@@ -28,7 +28,7 @@ export function configCommand() {
           password = await prompt('Application Password: ', true);
           if (!password) {
             console.error('Error: Password is required.');
-            process.exit(1);
+            process.exitCode = 1;
           }
         }
 
@@ -42,7 +42,7 @@ export function configCommand() {
         }
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -85,7 +85,7 @@ export function configCommand() {
         console.log(`Default profile set to "${name}".`);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -98,7 +98,7 @@ export function configCommand() {
         console.log(`Profile "${name}" removed.`);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 

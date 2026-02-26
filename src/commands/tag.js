@@ -33,7 +33,7 @@ export function tagCommand() {
         printOutput(tags, opts.format, TAG_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -59,7 +59,7 @@ export function tagCommand() {
         printOutput(tag, opts.format, TAG_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -75,7 +75,7 @@ export function tagCommand() {
         console.log(`Tag deleted (ID: ${id}).`);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 

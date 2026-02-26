@@ -33,7 +33,7 @@ export function postCommand() {
     .description('List posts')
     .option('--profile <name>', 'Profile to use')
     .option('--format <format>', 'Output format: table or json', 'table')
-    .option('--status <status>', 'Filter by status: publish, draft, pending, private', 'any')
+    .option('--status <status>', 'Filter by status: publish, draft, pending, private')
     .option('--per-page <n>', 'Number of posts per page', '10')
     .option('--page <n>', 'Page number', '1')
     .option('--search <term>', 'Search term')
@@ -47,8 +47,8 @@ export function postCommand() {
         const params = {
           per_page: opts.perPage,
           page: opts.page,
-          status: opts.status,
         };
+        if (opts.status) params.status = opts.status;
         if (opts.search) params.search = opts.search;
         if (opts.category) params.categories = opts.category;
         if (opts.tag) params.tags = opts.tag;
@@ -57,7 +57,7 @@ export function postCommand() {
         printOutput(posts, opts.format, POST_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -74,7 +74,7 @@ export function postCommand() {
         printOutput(post, opts.format, POST_DETAIL_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -119,7 +119,7 @@ export function postCommand() {
         printOutput(post, opts.format, POST_DETAIL_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -158,7 +158,7 @@ export function postCommand() {
 
         if (Object.keys(data).length === 0) {
           console.error('Error: No fields to update. Specify at least one option.');
-          process.exit(1);
+          process.exitCode = 1;
         }
 
         const post = await api.updatePost(id, data);
@@ -166,7 +166,7 @@ export function postCommand() {
         printOutput(post, opts.format, POST_DETAIL_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -185,7 +185,7 @@ export function postCommand() {
         if (result) printOutput(result, opts.format, POST_DETAIL_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 

@@ -32,7 +32,7 @@ export function pageCommand() {
     .description('List pages')
     .option('--profile <name>', 'Profile to use')
     .option('--format <format>', 'Output format: table or json', 'table')
-    .option('--status <status>', 'Filter by status', 'any')
+    .option('--status <status>', 'Filter by status')
     .option('--per-page <n>', 'Number of pages per page', '10')
     .option('--page <n>', 'Page number', '1')
     .option('--search <term>', 'Search term')
@@ -44,15 +44,15 @@ export function pageCommand() {
         const params = {
           per_page: opts.perPage,
           page: opts.page,
-          status: opts.status,
         };
+        if (opts.status) params.status = opts.status;
         if (opts.search) params.search = opts.search;
 
         const pages = await api.listPages(params);
         printOutput(pages, opts.format, PAGE_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -69,7 +69,7 @@ export function pageCommand() {
         printOutput(page, opts.format, PAGE_DETAIL_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -112,7 +112,7 @@ export function pageCommand() {
         printOutput(page, opts.format, PAGE_DETAIL_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -149,7 +149,7 @@ export function pageCommand() {
 
         if (Object.keys(data).length === 0) {
           console.error('Error: No fields to update.');
-          process.exit(1);
+          process.exitCode = 1;
         }
 
         const page = await api.updatePage(id, data);
@@ -157,7 +157,7 @@ export function pageCommand() {
         printOutput(page, opts.format, PAGE_DETAIL_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 
@@ -176,7 +176,7 @@ export function pageCommand() {
         if (result) printOutput(result, opts.format, PAGE_DETAIL_COLUMNS);
       } catch (err) {
         console.error(`Error: ${err.message}`);
-        process.exit(1);
+        process.exitCode = 1;
       }
     });
 

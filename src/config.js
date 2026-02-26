@@ -3,13 +3,13 @@ import { join } from 'node:path';
 import { homedir } from 'node:os';
 import { createCipheriv, createDecipheriv, randomBytes, createHash } from 'node:crypto';
 
-const CONFIG_DIR = join(homedir(), '.wp-post-cli');
+const CONFIG_DIR = join(homedir(), '.wp-rest-cli');
 const CONFIG_FILE = join(CONFIG_DIR, 'config.json');
 const CREDENTIALS_FILE = join(CONFIG_DIR, 'credentials.json');
 
 // Derive encryption key from machine-specific data
 function getEncryptionKey() {
-  const seed = `wp-post-cli:${homedir()}:${process.env.USERNAME || process.env.USER || 'default'}`;
+  const seed = `wp-rest-cli:${homedir()}:${process.env.USERNAME || process.env.USER || 'default'}`;
   return createHash('sha256').update(seed).digest();
 }
 
@@ -134,19 +134,19 @@ export function getResolvedProfile(profileNameOption) {
   const name = profileNameOption || config.defaultProfile;
 
   if (!name) {
-    throw new Error('No profile specified and no default profile set. Run: wp-post config add <name>');
+    throw new Error('No profile specified and no default profile set. Run: wp-rest config add <name>');
   }
 
   const profile = profiles[name];
   if (!profile) {
-    throw new Error(`Profile "${name}" not found. Run: wp-post config list`);
+    throw new Error(`Profile "${name}" not found. Run: wp-rest config list`);
   }
 
   // Get credential
   const creds = readJson(CREDENTIALS_FILE);
   const encryptedPassword = creds[name];
   if (!encryptedPassword) {
-    throw new Error(`No credentials found for profile "${name}". Run: wp-post config add ${name}`);
+    throw new Error(`No credentials found for profile "${name}". Run: wp-rest config add ${name}`);
   }
 
   let password;

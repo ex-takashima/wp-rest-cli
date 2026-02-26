@@ -1,0 +1,17 @@
+{
+  "name": "wp-rest-cli",
+  "version": "1.1.0",
+  "description": "WordPress REST API CLI スキル - 投稿、固定ページ、メディア、カテゴリ、タグをコマンドラインから管理",
+  "author": {
+    "name": "ex-takashima"
+  },
+  "keywords": ["wordpress", "cli", "rest-api", "post", "media", "blog"],
+  "skills": [
+    {
+      "name": "wp-rest",
+      "path": "skills/wp-rest/skill.md",
+      "description": "WordPress投稿・ページ・メディア・カテゴリ・タグをCLIから管理",
+      "triggers": ["WordPress", "WP投稿", "ブログ投稿", "記事を投稿", "記事を公開", "WordPressに投稿", "下書き", "固定ページ", "メディアアップロード", "カテゴリ", "タグ"]
+    }
+  ]
+}

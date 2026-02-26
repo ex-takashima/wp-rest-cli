@@ -62,7 +62,7 @@ export function configCommand() {
       }));
 
       if (entries.length === 0) {
-        console.log('No profiles configured. Run: wp-post config add <name>');
+        console.log('No profiles configured. Run: wp-rest config add <name>');
         return;
       }
 

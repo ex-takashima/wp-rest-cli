@@ -10,9 +10,9 @@ export function createCli() {
   const program = new Command();
 
   program
-    .name('wp-post')
+    .name('wp-rest')
     .description('WordPress REST API CLI - manage posts, pages, media, categories, and tags')
-    .version('1.0.0');
+    .version('1.1.0');
 
   program.addCommand(configCommand());
   program.addCommand(postCommand());

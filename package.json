@@ -1,10 +1,10 @@
 {
   "name": "wp-rest-cli",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "WordPress REST API CLI tool - manage posts, pages, media, categories, and tags from the command line",
   "type": "module",
   "bin": {
-    "wp-rest": "./bin/wp-post.js"
+    "wp-rest": "./bin/wp-rest.js"
   },
   "files": [
     "bin/",
@@ -32,11 +32,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ex-takashima/wp-post-cli.git"
+    "url": "git+https://github.com/ex-takashima/wp-rest-cli.git"
   },
-  "homepage": "https://github.com/ex-takashima/wp-post-cli#readme",
+  "homepage": "https://github.com/ex-takashima/wp-rest-cli#readme",
   "bugs": {
-    "url": "https://github.com/ex-takashima/wp-post-cli/issues"
+    "url": "https://github.com/ex-takashima/wp-rest-cli/issues"
   },
   "dependencies": {
     "commander": "^13.0.0",
